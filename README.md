@@ -3,7 +3,7 @@
 
 - 每天12点自动跟新HOST文件，科学上网
 
-- python 2.7
+- python 3.5
 
 - crontab :
     ```

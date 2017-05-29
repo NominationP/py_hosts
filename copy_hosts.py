@@ -8,26 +8,15 @@ author   : Zhangze
 date     : 2016-12-14
 
 '''
-
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
-
-import urllib2
-import urllib
+import urllib.request
 import datetime
-import json
-from bs4 import BeautifulSoup
-from shutil import copyfile
+fp = urllib.request.urlopen("https://raw.githubusercontent.com/racaljk/hosts/master/hosts")
 
 
+mybytes = fp.read()
 
-request = urllib2.Request(url='https://raw.githubusercontent.com/racaljk/hosts/master/hosts')
-response = urllib2.urlopen(request, timeout=20)
-result = response.read()
-result = BeautifulSoup(result)
-
-content = result.get_text()
+content = mybytes.decode("utf8")
+fp.close()
 
 # dup
 fw = open('/var/www/html/py_hosts/hosts_new','w')
